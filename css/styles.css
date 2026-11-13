@@ -1,0 +1,265 @@
+/* ========================================================
+   AUTOTECH PRO - ESTILOS PERSONALIZADOS
+   Práctica AD01 - Fundamentos de Desarrollo Web (Cordillera)
+   Estudiante: Matías Montúfar
+   ======================================================== */
+
+:root {
+    --primary-color: #0d6efd;
+    --primary-dark: #0a58ca;
+    --accent-yellow: #ffb703;
+    --accent-orange: #fb8500;
+    --dark-bg: #121820;
+    --dark-card: #1c2430;
+    --dark-surface: #242f3d;
+    --light-bg: #f8fafc;
+    --text-muted: #64748b;
+    --border-color: #334155;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--light-bg);
+    color: #1e293b;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* NAVBAR Y HEADER */
+.top-bar {
+    font-size: 0.825rem;
+}
+
+.navbar {
+    background-color: #0f172a !important;
+    border-bottom: 2px solid #ffb703;
+    transition: var(--transition);
+}
+
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 183, 3, 0.15);
+    border-radius: 8px;
+}
+
+.nav-link {
+    transition: var(--transition);
+    border-radius: 6px;
+    padding: 0.5rem 0.85rem !important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-yellow) !important;
+    background: rgba(255, 183, 3, 0.08);
+}
+
+/* SECCIÓN HERO (INICIO) */
+.hero-section {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.88) 100%),
+                url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    min-height: 85vh;
+}
+
+.min-vh-75 {
+    min-height: 70vh;
+}
+
+.fw-extrabold {
+    font-weight: 800;
+}
+
+.tracking-wider {
+    letter-spacing: 0.05em;
+}
+
+.feature-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* CATÁLOGO DE SERVICIOS */
+.service-card {
+    background-color: var(--dark-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-yellow);
+}
+
+.service-card .card-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 183, 3, 0.12);
+    border-radius: 12px;
+    color: var(--accent-yellow);
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+    transition: var(--transition);
+}
+
+.service-card:hover .card-icon {
+    background: var(--accent-yellow);
+    color: #0f172a;
+    transform: scale(1.08);
+}
+
+/* FORMULARIO DE SOLICITUD */
+.card-header.bg-dark {
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+}
+
+.form-label {
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+.input-group-text {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #64748b;
+}
+
+.form-control, .form-select {
+    border-color: #cbd5e1;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 0.25rem rgba(251, 133, 0, 0.2);
+}
+
+/* BADGES DE ESTADOS DEL MANTENIMIENTO */
+.badge-estado-pendiente {
+    background-color: #eab308;
+    color: #422006;
+    font-weight: 600;
+}
+
+.badge-estado-en-revisión, .badge-estado-en-revision {
+    background-color: #06b6d4;
+    color: #083344;
+    font-weight: 600;
+}
+
+.badge-estado-en-proceso {
+    background-color: #3b82f6;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.badge-estado-finalizado {
+    background-color: #22c55e;
+    color: #052e16;
+    font-weight: 600;
+}
+
+.badge-estado-cancelado {
+    background-color: #ef4444;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* PRIORIDADES */
+.badge-prioridad-normal {
+    background-color: #64748b;
+    color: #ffffff;
+}
+.badge-prioridad-express {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+.badge-prioridad-urgente {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+/* TABLAS Y ACCIONES CRUD */
+.table-responsive {
+    border-radius: 12px;
+}
+
+.table th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+}
+
+.table td {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+}
+
+.btn-action-group .btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+/* MODALES */
+.modal-content {
+    border: none;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* BOTONES DE ACCESO RÁPIDO EN LOGIN */
+.btn-quick-login {
+    transition: var(--transition);
+    border-width: 1.5px;
+}
+
+.btn-quick-login:hover {
+    transform: translateX(4px);
+}
+
+/* FOOTER */
+footer {
+    background-color: #0a0f1d !important;
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #1e293b;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+    }
+    .top-bar {
+        text-align: center;
+    }
+}

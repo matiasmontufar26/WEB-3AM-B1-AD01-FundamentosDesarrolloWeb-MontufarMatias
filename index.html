@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTech Pro | Taller y Mantenimiento Automotriz</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="100" tabindex="0">
+
+    <!-- HEADER Y NAVEGACIÓN INSTITUCIONAL -->
+    <header class="sticky-top shadow-sm">
+        <!-- Top bar informativo -->
+        <div class="top-bar bg-dark-subtle text-body-secondary py-1 small border-bottom border-secondary-subtle">
+            <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div>
+                    <span class="me-3"><i class="fa-solid fa-location-dot text-danger me-1"></i> Av. De los Shyris & Portugal, Quito - Ecuador</span>
+                    <span><i class="fa-regular fa-clock text-warning me-1"></i> Lun - Sáb: 08:00 - 17:30</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span><i class="fa-solid fa-phone text-success me-1"></i> (02) 299-8000 / 0991234567</span>
+                    <!-- Quick Session Indicator -->
+                    <span id="topSessionBadge" class="badge bg-secondary">Sin sesión activa</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de navegación principal -->
+        <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#inicio">
+                    <span class="brand-icon"><i class="fa-solid fa-gears text-warning"></i></span>
+                    <span class="brand-text">AUTOTECH <span class="text-warning">PRO</span></span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#inicio"><i class="fa-solid fa-house me-1"></i> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#nosotros"><i class="fa-solid fa-users me-1"></i> Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#servicios"><i class="fa-solid fa-wrench me-1"></i> Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#solicitud"><i class="fa-solid fa-calendar-plus me-1"></i> Solicitar Mantenimiento</a>
+                        </li>
+                        <li class="nav-item d-none" id="navItemMisSolicitudes">
+                            <a class="nav-link text-info" href="#mis-mantenimientos"><i class="fa-solid fa-car me-1"></i> Mis Mantenimientos</a>
+                        </li>
+                        <li class="nav-item d-none" id="navItemAdmin">
+                            <a class="nav-link text-warning" href="#panel-admin"><i class="fa-solid fa-sliders me-1"></i> Panel Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacto"><i class="fa-solid fa-envelope me-1"></i> Contacto</a>
+                        </li>
+                    </ul>
+
+                    <!-- Botones de sesión y perfil -->
+                    <div class="d-flex align-items-center gap-2" id="navAuthContainer">
+                        <button class="btn btn-outline-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#modalLogin" id="btnOpenLogin">
+                            <i class="fa-solid fa-right-to-bracket me-1"></i> Iniciar Sesión
+                        </button>
+                    </div>
+
+                    <!-- Usuario autenticado dropdown -->
+                    <div class="dropdown d-none" id="navUserDropdown">
+                        <button class="btn btn-dark border-secondary dropdown-toggle btn-sm d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user-circle text-warning fs-5"></i>
+                            <span id="navUserName" class="fw-semibold text-truncate" style="max-width: 140px;">Usuario</span>
+                            <span id="navUserRoleBadge" class="badge bg-primary ms-1">Rol</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow">
+                            <li><h6 class="dropdown-header text-uppercase small text-secondary">Mi Cuenta</h6></li>
+                            <li><button class="dropdown-item" id="btnVerMiPerfil"><i class="fa-solid fa-id-card me-2 text-info"></i> Consultar Perfil</button></li>
+                            <li id="dropdownOptionMisSolicitudes"><button class="dropdown-item" id="btnIrMisSolicitudes"><i class="fa-solid fa-clipboard-list me-2 text-primary"></i> Mis Mantenimientos</button></li>
+                            <li id="dropdownOptionAdmin" class="d-none"><button class="dropdown-item" id="btnIrAdmin"><i class="fa-solid fa-gear me-2 text-warning"></i> Gestión Administrativa</button></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item text-danger" id="btnLogout"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Cerrar Sesión</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CUERPO PRINCIPAL (MAIN) -->
+    <main>
+        <!-- SECCIÓN 1: HERO / INICIO -->
+        <section id="inicio" class="hero-section text-white d-flex align-items-center position-relative">
+            <div class="hero-overlay"></div>
+            <div class="container position-relative py-5">
+                <div class="row align-items-center min-vh-75 py-5">
+                    <div class="col-lg-7">
+                        <span class="badge bg-warning text-dark px-3 py-2 fw-bold text-uppercase tracking-wider mb-3">
+                            <i class="fa-solid fa-award me-1"></i> Calidad Garantizada & Diagnóstico Computarizado
+                        </span>
+                        <h1 class="display-4 fw-extrabold mb-3">Cuidado experto y tecnología para su vehículo</h1>
+                        <p class="lead text-light mb-4 opacity-90">
+                            En <strong>AutoTech Pro</strong> garantizamos el rendimiento, seguridad y durabilidad de su automóvil con mecánicos certificados, repuestos originales y atención personalizada.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#solicitud" class="btn btn-warning btn-lg px-4 fw-bold shadow">
+                                <i class="fa-solid fa-calendar-check me-2"></i> Agendar Mantenimiento
+                            </a>
+                            <a href="#servicios" class="btn btn-outline-light btn-lg px-4 fw-semibold">
+                                <i class="fa-solid fa-list-check me-2"></i> Ver Catálogo de Servicios
+                            </a>
+                        </div>
+                        <!-- Métricas de confianza -->
+                        <div class="row mt-5 pt-3 border-top border-secondary text-center text-md-start g-3">
+                            <div class="col-4">
+                                <h3 class="fw-bold text-warning mb-0">+15</h3>
+                                <p class="text-white-50 small mb-0">Años de experiencia</p>
+                            </div>
+                            <div class="col-4">
+                                <h3 class="fw-bold text-warning mb-0">+10k</h3>
+                                <p class="text-white-50 small mb-0">Vehículos atendidos</p>
+                            </div>
+                            <div class="col-4">
+                                <h3 class="fw-bold text-warning mb-0">100%</h3>
+                                <p class="text-white-50 small mb-0">Garantía en mano de obra</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="card bg-dark bg-opacity-75 border-secondary text-white p-4 shadow-lg rounded-4">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="p-3 bg-warning bg-opacity-25 rounded-circle me-3">
+                                        <i class="fa-solid fa-car-tunnel text-warning fs-3"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0 fw-bold">Atención Rápida</h5>
+                                        <small class="text-secondary">Gestión digital de citas</small>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled small d-flex flex-column gap-2 mb-4">
+                                    <li><i class="fa-solid fa-circle-check text-success me-2"></i> Registro en línea sin filas</li>
+                                    <li><i class="fa-solid fa-circle-check text-success me-2"></i> Seguimiento en tiempo real de su auto</li>
+                                    <li><i class="fa-solid fa-circle-check text-success me-2"></i> Reporte transparente de mantenimientos</li>
+                                    <li><i class="fa-solid fa-circle-check text-success me-2"></i> Control para administradores y clientes</li>
+                                </ul>
+                                <button class="btn btn-info w-100 fw-bold text-dark" data-bs-toggle="modal" data-bs-target="#modalDemoCredentials">
+                                    <i class="fa-solid fa-key me-2"></i> Ver Cuentas de Demostración
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: ACERCA DE NOSOTROS -->
+        <section id="nosotros" class="py-5 bg-light">
+            <div class="container py-4">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <div class="position-relative">
+                            <div class="about-card p-4 bg-white shadow rounded-4 border-start border-4 border-warning">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <i class="fa-solid fa-screwdriver-wrench text-warning fs-1"></i>
+                                    <div>
+                                        <h4 class="fw-bold mb-0">Taller Automotriz Certificado</h4>
+                                        <p class="text-muted small mb-0">Normas internacionales de servicio</p>
+                                    </div>
+                                </div>
+                                <p class="text-secondary mb-3">
+                                    Somos un centro especializado en mecánica general, preventiva y correctiva con infraestructura de primer nivel. Ofrecemos a nuestros clientes una plataforma web interactiva donde pueden dar seguimiento a cada etapa de la atención de sus vehículos.
+                                </p>
+                                <div class="row g-3 text-center">
+                                    <div class="col-sm-6">
+                                        <div class="p-3 bg-light rounded-3 border">
+                                            <i class="fa-solid fa-shield-halved text-primary fs-3 mb-2"></i>
+                                            <h6 class="fw-bold mb-1">Misión</h6>
+                                            <p class="text-muted small mb-0">Brindar seguridad y confiabilidad mecánica con tecnología de vanguardia.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-3 bg-light rounded-3 border">
+                                            <i class="fa-solid fa-eye text-success fs-3 mb-2"></i>
+                                            <h6 class="fw-bold mb-1">Visión</h6>
+                                            <p class="text-muted small mb-0">Ser el taller automotriz líder del país en transparencia y servicio digital.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="text-warning fw-bold text-uppercase small tracking-wider">¿Por qué elegir AutoTech Pro?</span>
+                        <h2 class="display-6 fw-bold mb-4 mt-2">Compromiso técnico con cada detalle de su automóvil</h2>
+                        <p class="text-muted mb-4">
+                            Nuestro equipo está capacitado para diagnosticar y resolver cualquier falla mecánica, eléctrica o electrónica. Implementamos políticas de estricto control de calidad y honestidad en presupuestos.
+                        </p>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="feature-icon bg-warning text-dark rounded-circle p-2 px-3 fw-bold">1</div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Escaneo y diagnóstico con escáneres OBD-II de última generación</h6>
+                                    <p class="text-muted small mb-0">Detección precisa de códigos de falla en el sistema de motor, transmisión y sensores.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="feature-icon bg-warning text-dark rounded-circle p-2 px-3 fw-bold">2</div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Trazabilidad completa de sus órdenes de mantenimiento</h6>
+                                    <p class="text-muted small mb-0">Consulte el estado de su vehículo en tiempo real: Pendiente, En revisión, En proceso o Finalizado.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="feature-icon bg-warning text-dark rounded-circle p-2 px-3 fw-bold">3</div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Personal altamente calificado y repuestos garantizados</h6>
+                                    <p class="text-muted small mb-0">Técnicos titulados con certificaciones automotrices vigentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CATÁLOGO DE SERVICIOS -->
+        <section id="servicios" class="py-5 bg-dark text-white">
+            <div class="container py-4">
+                <div class="text-center mb-5">
+                    <span class="badge bg-warning text-dark text-uppercase px-3 py-2 fw-bold">Nuestra Oferta Especializada</span>
+                    <h2 class="display-6 fw-bold mt-2">Catálogo de Servicios Automotrices</h2>
+                    <p class="text-white-50 max-w-600 mx-auto">Seleccione cualquiera de nuestros servicios para agendar su cita de manera inmediata.</p>
+                </div>
+
+                <!-- Contenedor dinámico de servicios inyectado por JS -->
+                <div class="row g-4" id="serviciosContainer">
+                    <!-- Se renderiza dinámicamente con JavaScript usando forEach() -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: FORMULARIO DE SOLICITUD DE MANTENIMIENTO (MÓDULO 2) -->
+        <section id="solicitud" class="py-5 bg-secondary-subtle">
+            <div class="container py-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                            <div class="card-header bg-dark text-white p-4 border-0">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <div>
+                                        <h3 class="fw-bold mb-1"><i class="fa-solid fa-calendar-check text-warning me-2"></i>Solicitud de Mantenimiento Vehicular</h3>
+                                        <p class="text-white-50 small mb-0">Complete todos los campos requeridos para registrar la orden de servicio.</p>
+                                    </div>
+                                    <span class="badge bg-warning text-dark fw-bold px-3 py-2">
+                                        <i class="fa-solid fa-shield-cat me-1"></i> Formulario Validado
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-body p-4 p-md-5 bg-white">
+                                <!-- Banner contextual para cuando hay un usuario logueado -->
+                                <div id="solicitudRoleAlert" class="alert alert-info d-flex align-items-center justify-content-between mb-4 fade show" role="alert">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa-solid fa-circle-info fs-4 me-3"></i>
+                                        <div>
+                                            <strong id="solicitudRoleAlertTitle">Modo Invitado / Registro Inicial</strong>
+                                            <div id="solicitudRoleAlertDesc" class="small">Puede registrar su mantenimiento. Si inicia sesión como Cliente o Administrador sus datos se vincularán automáticamente.</div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                                        Iniciar Sesión
+                                    </button>
+                                </div>
+
+                                <!-- FORMULARIO PRINCIPAL -->
+                                <form id="formSolicitud" novalidate>
+                                    <!-- SUBSECCIÓN 1: DATOS DEL CLIENTE -->
+                                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">
+                                        <i class="fa-solid fa-user text-warning me-2"></i>1. Datos del Propietario / Cliente
+                                    </h5>
+                                    
+                                    <div class="row g-3 mb-4">
+                                        <!-- Modo admin: opción de seleccionar cliente existente o escribir uno nuevo -->
+                                        <div class="col-12 d-none" id="adminClienteSelectorContainer">
+                                            <label for="adminClienteSelect" class="form-label fw-bold text-primary">
+                                                <i class="fa-solid fa-user-gear me-1"></i> Asignar a Cliente Registrado (Modo Administrador)
+                                            </label>
+                                            <select class="form-select border-primary" id="adminClienteSelect">
+                                                <!-- Opciones generadas por JS -->
+                                            </select>
+                                            <div class="form-text">Como Administrador puede emitir órdenes para sí mismo o para cualquier cliente.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="clienteNombre" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+                                                <input type="text" class="form-control" id="clienteNombre" placeholder="Ej. Matías Montúfar" required>
+                                            </div>
+                                            <div class="invalid-feedback">Por favor ingrese el nombre del propietario (mínimo 3 caracteres).</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="clienteEmail" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                                <input type="email" class="form-control" id="clienteEmail" placeholder="ejemplo@correo.com" required>
+                                            </div>
+                                            <div class="invalid-feedback">Ingrese un correo electrónico válido.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="clienteTelefono" class="form-label fw-semibold">Teléfono / Celular <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                                <input type="text" class="form-control" id="clienteTelefono" placeholder="Ej. 0991234567" maxlength="10" required>
+                                            </div>
+                                            <div class="invalid-feedback">Ingrese un número telefónico de 10 dígitos (ej. 0991234567).</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="clienteCedula" class="form-label fw-semibold">Cédula / Identificación <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-address-card"></i></span>
+                                                <input type="text" class="form-control" id="clienteCedula" placeholder="Ej. 1723456789" maxlength="13" required>
+                                            </div>
+                                            <div class="invalid-feedback">Ingrese un documento de identidad válido (10 dígitos).</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- SUBSECCIÓN 2: DATOS DEL AUTOMÓVIL -->
+                                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">
+                                        <i class="fa-solid fa-car-side text-warning me-2"></i>2. Información del Vehículo
+                                    </h5>
+
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-4">
+                                            <label for="autoPlaca" class="form-label fw-semibold">Placa Vehicular <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-rectangle-list"></i></span>
+                                                <input type="text" class="form-control text-uppercase font-monospace fw-bold" id="autoPlaca" placeholder="PBC-1234" maxlength="8" required>
+                                            </div>
+                                            <div class="form-text small">Formato estándar: 3 letras, guión y 3 o 4 dígitos (Ej. <strong>PBA-1234</strong> o <strong>ABC-123</strong>).</div>
+                                            <div class="invalid-feedback">Formato de placa inválido. Use formato ecuatoriano: 3 letras, guión y 3 o 4 números (ej. PBC-1234).</div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="autoMarca" class="form-label fw-semibold">Marca <span class="text-danger">*</span></label>
+                                            <select class="form-select" id="autoMarca" required>
+                                                <option value="" selected disabled>Seleccione la marca...</option>
+                                                <option value="Chevrolet">Chevrolet</option>
+                                                <option value="Toyota">Toyota</option>
+                                                <option value="Hyundai">Hyundai</option>
+                                                <option value="Kia">Kia</option>
+                                                <option value="Nissan">Nissan</option>
+                                                <option value="Volkswagen">Volkswagen</option>
+                                                <option value="Ford">Ford</option>
+                                                <option value="Renault">Renault</option>
+                                                <option value="Mazda">Mazda</option>
+                                                <option value="Suzuki">Suzuki</option>
+                                                <option value="Otra">Otra marca</option>
+                                            </select>
+                                            <div class="invalid-feedback">Seleccione la marca del vehículo.</div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="autoModelo" class="form-label fw-semibold">Modelo <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="autoModelo" placeholder="Ej. Aveo Family, Corolla, Tucson" required>
+                                            <div class="invalid-feedback">Ingrese el modelo del vehículo.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="autoAnio" class="form-label fw-semibold">Año de Fabricación <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+                                                <input type="number" class="form-control" id="autoAnio" placeholder="Ej. 2020" min="1990" max="2027" required>
+                                            </div>
+                                            <div class="form-text small">Rango válido: entre 1990 y 2027.</div>
+                                            <div class="invalid-feedback">El año debe ser válido entre 1990 y 2027.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="autoKilometraje" class="form-label fw-semibold">Kilometraje Actual (km) <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fa-solid fa-gauge-high"></i></span>
+                                                <input type="number" class="form-control" id="autoKilometraje" placeholder="Ej. 45000" min="1" max="999999" required>
+                                            </div>
+                                            <div class="form-text small">Debe ser un número mayor a 0 km.</div>
+                                            <div class="invalid-feedback">Ingrese un kilometraje válido (mayor a 0 km).</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- SUBSECCIÓN 3: SERVICIO Y PROGRAMACIÓN -->
+                                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">
+                                        <i class="fa-solid fa-toolbox text-warning me-2"></i>3. Servicio Requerido y Cita
+                                    </h5>
+
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                            <label for="solicitudServicio" class="form-label fw-semibold">Tipo de Servicio Principal <span class="text-danger">*</span></label>
+                                            <select class="form-select" id="solicitudServicio" required>
+                                                <option value="" selected disabled>Seleccione un servicio...</option>
+                                                <option value="Mantenimiento Preventivo Periódico">Mantenimiento Preventivo Periódico</option>
+                                                <option value="Cambio de Aceite y Filtros">Cambio de Aceite y Filtros</option>
+                                                <option value="Revisión y Cambio de Frenos">Revisión y Cambio de Frenos</option>
+                                                <option value="Alineación, Balanceo y Rotación">Alineación, Balanceo y Rotación</option>
+                                                <option value="Diagnóstico Computarizado (Scanner OBD-II)">Diagnóstico Computarizado (Scanner OBD-II)</option>
+                                                <option value="Afinamiento y Limpieza de Inyectores">Afinamiento y Limpieza de Inyectores</option>
+                                                <option value="Reparación de Sistema de Suspensión">Reparación de Sistema de Suspensión</option>
+                                                <option value="Sistema Eléctrico y Batería">Sistema Eléctrico y Batería</option>
+                                                <option value="Reparación Mecánica General">Reparación Mecánica General</option>
+                                            </select>
+                                            <div class="invalid-feedback">Seleccione el servicio automotriz que necesita.</div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="solicitudFecha" class="form-label fw-semibold">Fecha Deseada <span class="text-danger">*</span></label>
+                                            <input type="date" class="form-control" id="solicitudFecha" required>
+                                            <div class="invalid-feedback">Seleccione una fecha válida (a partir de hoy).</div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="solicitudHora" class="form-label fw-semibold">Hora de Cita <span class="text-danger">*</span></label>
+                                            <input type="time" class="form-control" id="solicitudHora" min="08:00" max="17:30" required>
+                                            <div class="form-text small">Horario de 08:00 a 17:30.</div>
+                                            <div class="invalid-feedback">Seleccione una hora válida dentro del horario laboral (08:00 a 17:30).</div>
+                                        </div>
+
+                                        <!-- Tipo de atención: Radio Buttons (Módulo 2) -->
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-semibold d-block">Tipo de Atención / Prioridad <span class="text-danger">*</span></label>
+                                            <div class="d-flex flex-wrap gap-4 p-3 bg-light rounded-3 border">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="tipoPrioridad" id="prioridadNormal" value="Normal" checked>
+                                                    <label class="form-check-label" for="prioridadNormal">
+                                                        <span class="badge bg-secondary me-1">Estándar</span> Turno regular de taller (24 a 48 hrs)
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="tipoPrioridad" id="prioridadExpress" value="Express">
+                                                    <label class="form-check-label" for="prioridadExpress">
+                                                        <span class="badge bg-primary me-1">Express</span> Mantenimiento en el mismo día (2 a 4 hrs)
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="tipoPrioridad" id="prioridadUrgente" value="Urgente">
+                                                    <label class="form-check-label" for="prioridadUrgente">
+                                                        <span class="badge bg-danger me-1">Urgente</span> Vehículo averiado / requiere grúa inmediata
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Servicios adicionales: Checkboxes (Módulo 2) -->
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-semibold d-block">Inspecciones Adicionales Requeridas (Opcional)</label>
+                                            <div class="row g-2 p-3 bg-light rounded-3 border">
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input check-adicional" type="checkbox" value="Revisión de líquido de frenos" id="chkFrenos">
+                                                        <label class="form-check-label small" for="chkFrenos">Revisión de líquido de frenos</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input check-adicional" type="checkbox" value="Comprobación de carga de batería" id="chkBateria">
+                                                        <label class="form-check-label small" for="chkBateria">Comprobación de batería y alternador</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input check-adicional" type="checkbox" value="Inspección de luces y faros" id="chkLuces">
+                                                        <label class="form-check-label small" for="chkLuces">Inspección de luces y faros</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input check-adicional" type="checkbox" value="Revisión de amortiguadores y suspensión" id="chkSuspension">
+                                                        <label class="form-check-label small" for="chkSuspension">Amortiguadores y suspensión</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input check-adicional" type="checkbox" value="Nivel de refrigerante y mangueras" id="chkRefrigerante">
+                                                        <label class="form-check-label small" for="chkRefrigerante">Refrigerante y mangueras</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input check-adicional" type="checkbox" value="Lavado de cortesía básico" id="chkLavado" checked>
+                                                        <label class="form-check-label small fw-semibold text-success" for="chkLavado">Lavado de cortesía (Gratis)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Textarea: Observaciones y síntomas del vehículo (Módulo 2) -->
+                                        <div class="col-12">
+                                            <label for="solicitudObservaciones" class="form-label fw-semibold">Observaciones, Síntomas o Fallas Notadas</label>
+                                            <textarea class="form-control" id="solicitudObservaciones" rows="3" placeholder="Describa si escucha algún ruido extraño, vibración, encendido del testigo 'Check Engine' o requerimiento especial..."></textarea>
+                                            <div class="form-text small">Sea lo más detallado posible para que nuestros mecánicos preparen los equipos necesarios.</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- BOTÓN DE ENVÍO -->
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pt-3 border-top">
+                                        <button type="reset" class="btn btn-outline-secondary" id="btnResetSolicitud">
+                                            <i class="fa-solid fa-rotate-left me-1"></i> Limpiar Campos
+                                        </button>
+                                        <button type="submit" class="btn btn-warning btn-lg px-5 fw-bold shadow">
+                                            <i class="fa-solid fa-paper-plane me-2"></i> Registrar Solicitud
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: MIS MANTENIMIENTOS (VISTA DE CLIENTE) -->
+        <section id="mis-mantenimientos" class="py-5 bg-light d-none">
+            <div class="container py-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                    <div>
+                        <span class="badge bg-primary text-uppercase px-3 py-2 fw-bold">Área de Cliente</span>
+                        <h2 class="display-6 fw-bold mt-2 mb-1">Mis Solicitudes de Mantenimiento</h2>
+                        <p class="text-muted mb-0">Consulte el estado de atención y el historial de sus vehículos.</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="#solicitud" class="btn btn-outline-primary fw-semibold">
+                            <i class="fa-solid fa-plus me-1"></i> Nueva Solicitud
+                        </a>
+                        <button class="btn btn-secondary fw-semibold" id="btnRecargarMisSolicitudes">
+                            <i class="fa-solid fa-arrows-rotate me-1"></i> Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta con resumen del cliente -->
+                <div class="card border-0 shadow-sm mb-4 bg-white rounded-3">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h5 class="fw-bold mb-1 text-dark" id="clienteDashboardNombre">Propietario: Cargando...</h5>
+                                <p class="text-muted small mb-0">
+                                    <i class="fa-solid fa-envelope me-1"></i> <span id="clienteDashboardEmail">-</span> | 
+                                    <i class="fa-solid fa-phone me-1 ms-2"></i> <span id="clienteDashboardTelefono">-</span>
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                <span class="badge bg-info text-dark fs-6 px-3 py-2" id="clienteDashboardCount">
+                                    <i class="fa-solid fa-car me-1"></i> 0 Órdenes registradas
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de mantenimientos del cliente -->
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0 text-nowrap">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Vehículo</th>
+                                        <th>Placa</th>
+                                        <th>Servicio</th>
+                                        <th>Fecha / Hora</th>
+                                        <th>Prioridad</th>
+                                        <th>Estado Actual</th>
+                                        <th class="text-center">Detalle</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="misMantenimientosTableBody">
+                                    <!-- Inyectado por JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="misMantenimientosEmpty" class="text-center py-5 d-none">
+                            <i class="fa-solid fa-car-tunnel text-secondary opacity-50 display-3 mb-3"></i>
+                            <h5 class="fw-bold text-secondary">Aún no tiene solicitudes de mantenimiento registradas</h5>
+                            <p class="text-muted small mb-3">Agende su primera cita utilizando nuestro formulario en línea.</p>
+                            <a href="#solicitud" class="btn btn-warning fw-bold px-4">
+                                <i class="fa-solid fa-calendar-plus me-2"></i> Agendar mi primer servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: PANEL DE ADMINISTRACIÓN (MÓDULO 3 - CRUD GENERAL Y CONTROL DE ESTADOS) -->
+        <section id="panel-admin" class="py-5 bg-dark text-white d-none">
+            <div class="container py-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4 border-bottom border-secondary pb-3">
+                    <div>
+                        <span class="badge bg-warning text-dark text-uppercase px-3 py-2 fw-bold">
+                            <i class="fa-solid fa-lock me-1"></i> Módulo Administrativo
+                        </span>
+                        <h2 class="display-6 fw-bold mt-2 mb-1">Gestión General de Solicitudes (CRUD)</h2>
+                        <p class="text-white-50 mb-0">Control global de órdenes de trabajo, clientes, estados mecánicos y reportería.</p>
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button class="btn btn-success fw-bold" id="btnAdminNuevaSolicitud">
+                            <i class="fa-solid fa-plus me-1"></i> Registrar para Cliente
+                        </button>
+                        <button class="btn btn-outline-light" id="btnAdminExportarJSON">
+                            <i class="fa-solid fa-download me-1"></i> Copia de Datos
+                        </button>
+                        <button class="btn btn-outline-danger" id="btnAdminResetDefaultData">
+                            <i class="fa-solid fa-trash-arrow-up me-1"></i> Restablecer Datos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- METRICAS / ESTADÍSTICAS DEL TALLER (Calculadas con map, filter y for) -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-secondary small text-uppercase mb-1">Total Solicitudes</h6>
+                                    <h3 class="fw-bold mb-0 text-white" id="statTotal">0</h3>
+                                </div>
+                                <div class="p-3 bg-secondary bg-opacity-50 rounded-circle">
+                                    <i class="fa-solid fa-clipboard-list fs-4 text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-secondary small text-uppercase mb-1">Pendientes / En Revisión</h6>
+                                    <h3 class="fw-bold mb-0 text-warning" id="statPendientes">0</h3>
+                                </div>
+                                <div class="p-3 bg-warning bg-opacity-25 rounded-circle">
+                                    <i class="fa-solid fa-clock-rotate-left fs-4 text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-secondary small text-uppercase mb-1">En Proceso (Taller)</h6>
+                                    <h3 class="fw-bold mb-0 text-info" id="statProceso">0</h3>
+                                </div>
+                                <div class="p-3 bg-info bg-opacity-25 rounded-circle">
+                                    <i class="fa-solid fa-wrench fs-4 text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-secondary small text-uppercase mb-1">Finalizados / Entregados</h6>
+                                    <h3 class="fw-bold mb-0 text-success" id="statFinalizados">0</h3>
+                                </div>
+                                <div class="p-3 bg-success bg-opacity-25 rounded-circle">
+                                    <i class="fa-solid fa-circle-check fs-4 text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILTROS Y BÚSQUEDA EN TIEMPO REAL -->
+                <div class="card bg-secondary bg-opacity-10 border-secondary mb-4 p-3 rounded-3">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-text bg-dark border-secondary text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" id="adminInputBusqueda" class="form-control bg-dark text-white border-secondary" placeholder="Buscar por cliente, placa, marca o código...">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label class="input-group-text bg-dark border-secondary text-white" for="adminFiltroEstado"><i class="fa-solid fa-filter me-1"></i> Estado:</label>
+                                <select class="form-select bg-dark text-white border-secondary" id="adminFiltroEstado">
+                                    <option value="TODOS" selected>Todos los estados</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="En revisión">En revisión</option>
+                                    <option value="En proceso">En proceso</option>
+                                    <option value="Finalizado">Finalizado</option>
+                                    <option value="Cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-md-end">
+                            <button class="btn btn-outline-secondary w-100" id="btnAdminLimpiarFiltros">
+                                <i class="fa-solid fa-eraser me-1"></i> Limpiar Filtros
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLA CRUD COMPLETA DE TODAS LAS SOLICITUDES -->
+                <div class="card bg-dark border-secondary shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover align-middle mb-0 text-nowrap">
+                                <thead>
+                                    <tr class="border-secondary text-secondary small text-uppercase">
+                                        <th>ID</th>
+                                        <th>Cliente</th>
+                                        <th>Vehículo / Placa</th>
+                                        <th>Servicio</th>
+                                        <th>Fecha Cita</th>
+                                        <th>Prioridad</th>
+                                        <th>Estado</th>
+                                        <th class="text-center">Acciones CRUD</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminTableBody">
+                                    <!-- Inyectado dinámicamente con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="adminTableEmpty" class="text-center py-5 d-none">
+                            <i class="fa-solid fa-inbox text-secondary display-4 mb-2"></i>
+                            <p class="text-secondary mb-0">No se encontraron solicitudes que coincidan con los filtros aplicados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: CONTACTO Y UBICACIÓN -->
+        <section id="contacto" class="py-5 bg-white">
+            <div class="container py-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-5">
+                        <span class="badge bg-warning text-dark text-uppercase px-3 py-2 fw-bold mb-2">Estamos para Servirle</span>
+                        <h2 class="display-6 fw-bold mb-3">Visítenos en nuestro Taller Matriz</h2>
+                        <p class="text-muted mb-4">
+                            Instalaciones equipadas con elevadores hidráulicos de última generación, cabinas de pintura y laboratorio de inyección electrónica.
+                        </p>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-light p-3 rounded-circle text-warning fs-5">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Ubicación</h6>
+                                    <p class="text-muted small mb-0">Av. De los Shyris & Portugal, Sector La Carolina, Quito - Ecuador</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-light p-3 rounded-circle text-success fs-5">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Líneas Directas</h6>
+                                    <p class="text-muted small mb-0">(02) 299-8000 | Celular: 099 123 4567 | WhatsApp Soporte</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-light p-3 rounded-circle text-primary fs-5">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Correo de Atención</h6>
+                                    <p class="text-muted small mb-0">contacto@autotechpro.ec / citas@autotechpro.ec</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="card border-0 shadow rounded-4 overflow-hidden">
+                            <div class="card-body p-4 bg-light">
+                                <h5 class="fw-bold mb-3"><i class="fa-solid fa-clock text-warning me-2"></i>Horarios de Atención al Cliente</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered bg-white mb-0">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>Día</th>
+                                                <th>Horario Matutino</th>
+                                                <th>Horario Vespertino</th>
+                                                <th>Recepción de Vehículos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Lunes a Viernes</td>
+                                                <td>08:00 - 13:00</td>
+                                                <td>14:00 - 17:30</td>
+                                                <td><span class="badge bg-success">Disponible</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Sábados</td>
+                                                <td>08:30 - 13:30</td>
+                                                <td>Solo entregas</td>
+                                                <td><span class="badge bg-warning text-dark">Previa Cita</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold text-danger">Domingos y Feriados</td>
+                                                <td colspan="3" class="text-center text-muted">Cerrado (Solo emergencias vía grúa)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="bg-dark text-white pt-5 pb-3 border-top border-secondary">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fa-solid fa-gears text-warning fs-3"></i>
+                        <h4 class="fw-bold mb-0 text-white">AUTOTECH <span class="text-warning">PRO</span></h4>
+                    </div>
+                    <p class="text-white-50 small">
+                        Plataforma web de gestión de mantenimiento automotriz y atención al cliente. Práctica académica desarrollada bajo los estándares de desarrollo web moderno.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-secondary btn-sm text-white rounded-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm text-white rounded-circle"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm text-white rounded-circle"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="text-uppercase fw-bold text-warning mb-3">Navegación</h6>
+                    <ul class="list-unstyled small d-flex flex-column gap-2 text-white-50">
+                        <li><a href="#inicio" class="text-white-50 text-decoration-none">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-white-50 text-decoration-none">Acerca de nosotros</a></li>
+                        <li><a href="#servicios" class="text-white-50 text-decoration-none">Servicios mecánicos</a></li>
+                        <li><a href="#solicitud" class="text-white-50 text-decoration-none">Agendar cita</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-uppercase fw-bold text-warning mb-3">Información Académica</h6>
+                    <ul class="list-unstyled small text-white-50 d-flex flex-column gap-1">
+                        <li><strong>Institución:</strong> ISTCO - Cordillera</li>
+                        <li><strong>Carrera:</strong> Desarrollo de Software</li>
+                        <li><strong>Materia:</strong> Programación Web 1</li>
+                        <li><strong>Práctica:</strong> AD01 - Mantenimiento Automotriz</li>
+                        <li><strong>Estudiante:</strong> Matías Montúfar</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-uppercase fw-bold text-warning mb-3">Herramientas & Docs</h6>
+                    <ul class="list-unstyled small text-white-50 d-flex flex-column gap-2">
+                        <li><i class="fa-brands fa-bootstrap text-primary me-2"></i>Bootstrap 5.3 CDN</li>
+                        <li><i class="fa-brands fa-js text-warning me-2"></i>JavaScript ES6+ Nativo</li>
+                        <li><i class="fa-solid fa-bell text-danger me-2"></i>SweetAlert2 Alerts</li>
+                        <li><button class="btn btn-sm btn-outline-warning w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalRegistroIA">
+                            <i class="fa-solid fa-file-shield me-1"></i> Ver Registro de Uso de IA
+                        </button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-3 text-center small text-white-50">
+                <p class="mb-0">&copy; 2026 AutoTech Pro - Instituto Superior Tecnológico Cordillera. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALES DEL SISTEMA ==================== -->
+
+    <!-- 1. MODAL LOGIN (MÓDULO 3) -->
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0 rounded-4">
+                <div class="modal-header bg-dark text-white border-0 py-3">
+                    <h5 class="modal-title fw-bold" id="modalLoginLabel">
+                        <i class="fa-solid fa-right-to-bracket text-warning me-2"></i> Acceso al Sistema
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formLogin">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label text-dark fw-semibold">Ingresa tu correo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="ejemplo@correo.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label text-dark fw-semibold">Ingresa tu contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="***" required>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-warning fw-bold py-2">
+                                <i class="fa-solid fa-arrow-right-to-bracket me-2"></i> Entrar
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- ACCESOS RÁPIDOS DE PRUEBA (Para facilitar la revisión docente de los casos mínimos de prueba) -->
+                    <div class="pt-3 border-top">
+                        <span class="text-uppercase small text-muted fw-bold d-block mb-2 text-center">
+                            <i class="fa-solid fa-vial me-1"></i> Cuentas de Demostración y Prueba Rápida
+                        </span>
+                        <div class="d-flex flex-column gap-2">
+                            <button class="btn btn-sm btn-outline-primary text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="matias@correo.com" data-password="cliente123">
+                                <span><i class="fa-solid fa-user me-2"></i> <strong>Cliente 1:</strong> Matías Montúfar</span>
+                                <span class="badge bg-primary">Cliente</span>
+                            </button>
+                            <button class="btn btn-sm btn-outline-info text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="carlos@correo.com" data-password="cliente123">
+                                <span><i class="fa-solid fa-user me-2"></i> <strong>Cliente 2:</strong> Carlos Pérez</span>
+                                <span class="badge bg-info text-dark">Cliente</span>
+                            </button>
+                            <button class="btn btn-sm btn-outline-dark text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="admin@taller.com" data-password="admin123">
+                                <span><i class="fa-solid fa-user-shield me-2"></i> <strong>Administrador:</strong> Taller Central</span>
+                                <span class="badge bg-warning text-dark">Admin</span>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="inactivo@correo.com" data-password="123456">
+                                <span><i class="fa-solid fa-user-xmark me-2"></i> <strong>Prueba 2:</strong> Cuenta Deshabilitada</span>
+                                <span class="badge bg-danger">Inactiva</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MODAL PERFIL DE USUARIO -->
+    <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0 rounded-4">
+                <div class="modal-header bg-dark text-white border-0 py-3">
+                    <h5 class="modal-title fw-bold" id="modalPerfilLabel">
+                        <i class="fa-solid fa-id-card text-warning me-2"></i> Perfil del Usuario
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <div class="mb-3">
+                        <div class="p-4 bg-light rounded-circle d-inline-block text-warning shadow-sm">
+                            <i class="fa-solid fa-user fs-1"></i>
+                        </div>
+                    </div>
+                    <h4 class="fw-bold mb-1" id="perfilNombre">Cargando...</h4>
+                    <p class="badge bg-primary px-3 py-2 fs-6 mb-3" id="perfilRol">Cliente</p>
+
+                    <div class="text-start bg-light p-3 rounded-3 border mb-3">
+                        <div class="mb-2"><strong><i class="fa-solid fa-envelope text-secondary me-2"></i> Correo:</strong> <span id="perfilEmail">-</span></div>
+                        <div class="mb-2"><strong><i class="fa-solid fa-phone text-secondary me-2"></i> Teléfono:</strong> <span id="perfilTelefono">-</span></div>
+                        <div class="mb-2"><strong><i class="fa-solid fa-address-card text-secondary me-2"></i> Cédula:</strong> <span id="perfilCedula">-</span></div>
+                        <div class="mb-2"><strong><i class="fa-solid fa-car text-secondary me-2"></i> Placa Frecuente:</strong> <span id="perfilPlaca" class="badge bg-dark">-</span></div>
+                        <div><strong><i class="fa-solid fa-circle-check text-success me-2"></i> Estado de cuenta:</strong> <span class="badge bg-success">Activa</span></div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MODAL VER DETALLE DE SOLICITUD (Solo lectura) -->
+    <div class="modal fade" id="modalDetalleSolicitud" tabindex="-1" aria-labelledby="modalDetalleSolicitudLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg border-0 rounded-4">
+                <div class="modal-header bg-dark text-white border-0 py-3">
+                    <h5 class="modal-title fw-bold" id="modalDetalleSolicitudLabel">
+                        <i class="fa-solid fa-file-invoice text-warning me-2"></i> Detalle de Solicitud de Mantenimiento
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="modalDetalleBody">
+                    <!-- Se llena con JS -->
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. MODAL EDITAR SOLICITUD (EXCLUSIVO ADMINISTRADOR - CRUD) -->
+    <div class="modal fade" id="modalEditarSolicitud" tabindex="-1" aria-labelledby="modalEditarSolicitudLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg border-0 rounded-4">
+                <div class="modal-header bg-warning text-dark border-0 py-3">
+                    <h5 class="modal-title fw-bold" id="modalEditarSolicitudLabel">
+                        <i class="fa-solid fa-pen-to-square me-2"></i> Modificar Solicitud y Estado (Administración)
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formEditarSolicitud">
+                        <input type="hidden" id="editSolicitudId">
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="editClienteNombre" class="form-label fw-semibold">Nombre Cliente</label>
+                                <input type="text" class="form-control" id="editClienteNombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editClienteEmail" class="form-label fw-semibold">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="editClienteEmail" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editAutoPlaca" class="form-label fw-semibold">Placa Vehicular</label>
+                                <input type="text" class="form-control text-uppercase fw-bold" id="editAutoPlaca" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editAutoMarca" class="form-label fw-semibold">Marca</label>
+                                <input type="text" class="form-control" id="editAutoMarca" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editAutoModelo" class="form-label fw-semibold">Modelo</label>
+                                <input type="text" class="form-control" id="editAutoModelo" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editAutoAnio" class="form-label fw-semibold">Año</label>
+                                <input type="number" class="form-control" id="editAutoAnio" min="1990" max="2027" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editAutoKilometraje" class="form-label fw-semibold">Kilometraje (km)</label>
+                                <input type="number" class="form-control" id="editAutoKilometraje" min="1" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="editEstado" class="form-label fw-bold text-danger">Estado de la Solicitud *</label>
+                                <select class="form-select border-danger fw-semibold" id="editEstado" required>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="En revisión">En revisión</option>
+                                    <option value="En proceso">En proceso</option>
+                                    <option value="Finalizado">Finalizado</option>
+                                    <option value="Cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editServicio" class="form-label fw-semibold">Servicio Asignado</label>
+                                <input type="text" class="form-control" id="editServicio" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="editFecha" class="form-label fw-semibold">Fecha</label>
+                                <input type="date" class="form-control" id="editFecha" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="editHora" class="form-label fw-semibold">Hora</label>
+                                <input type="time" class="form-control" id="editHora" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="editObservaciones" class="form-label fw-semibold">Observaciones / Diagnóstico Técnico</label>
+                                <textarea class="form-control" id="editObservaciones" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-warning fw-bold px-4">
+                                <i class="fa-solid fa-floppy-disk me-1"></i> Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. MODAL DE CUENTAS DE DEMOSTRACIÓN -->
+    <div class="modal fade" id="modalDemoCredentials" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0 rounded-4">
+                <div class="modal-header bg-dark text-white border-0 py-3">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fa-solid fa-users-gear text-warning me-2"></i> Credenciales de Prueba del Sistema
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="small text-muted mb-3">Utilice estas cuentas para comprobar los casos de prueba de la rúbrica de evaluación:</p>
+                    <div class="list-group small">
+                        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 fw-bold">1. Cliente: Matías Montúfar</h6>
+                                <code>matias@correo.com</code> | Clave: <code>cliente123</code>
+                            </div>
+                            <span class="badge bg-primary">Cliente</span>
+                        </div>
+                        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 fw-bold">2. Cliente: Carlos Pérez</h6>
+                                <code>carlos@correo.com</code> | Clave: <code>cliente123</code>
+                            </div>
+                            <span class="badge bg-info text-dark">Cliente</span>
+                        </div>
+                        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 fw-bold">3. Administrador del Taller</h6>
+                                <code>admin@taller.com</code> | Clave: <code>admin123</code>
+                            </div>
+                            <span class="badge bg-warning text-dark">Administrador</span>
+                        </div>
+                        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 fw-bold">4. Cuenta Inactiva (Prueba 2)</h6>
+                                <code>inactivo@correo.com</code> | Clave: <code>123456</code>
+                            </div>
+                            <span class="badge bg-danger">Deshabilitada</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-warning fw-bold" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                        Ir al Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. MODAL REGISTRO DE USO DE IA (ENTREGABLE ACADÉMICO ITSCO) -->
+    <div class="modal fade" id="modalRegistroIA" tabindex="-1" aria-labelledby="modalRegistroIALabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+            <div class="modal-content shadow-lg border-0 rounded-4">
+                <div class="modal-header bg-dark text-white border-0 py-3">
+                    <h5 class="modal-title fw-bold" id="modalRegistroIALabel">
+                        <i class="fa-solid fa-file-shield text-warning me-2"></i> Registro de fuentes y uso responsable de IA
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-secondary small">
+                        <strong>Actividad / Código:</strong> AD01 - Fundamentos de desarrollo Web | <strong>Estudiante:</strong> Matías Montúfar Ninahualpa | <strong>Fecha:</strong> 12/11/2026
+                    </div>
+                    <h6 class="fw-bold text-dark border-bottom pb-2">Declaración de uso responsable</h6>
+                    <p class="small text-muted">
+                        Utilicé IA generativa como apoyo técnico para maquetación, arquitectura de scripts y buenas prácticas. A continuación se documentan los prompts, respuestas aprovechadas y las fuentes bibliográficas formales verificadas según la política institucional.
+                    </p>
+
+                    <div class="table-responsive small mb-4">
+                        <table class="table table-bordered table-striped align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="width: 20%;">Parámetro</th>
+                                    <th>Detalle Registrado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold">Herramienta / Modelo</td>
+                                    <td>Gemini 3.8 Flash (High) / Antigravity Pair Programmer</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Propósito de la consulta</td>
+                                    <td>Estructuración semántica HTML5, diseño responsivo con Bootstrap 5, lógica CRUD con arrays de objetos en JavaScript y validaciones de formularios.</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Prompt exacto</td>
+                                    <td><code>Desarrollar el frontend de un sistema web para un taller de mantenimiento automotriz, aplicando la estructura semántica de HTML, estilos CSS/Bootstrap y, especialmente, programación con JavaScript. Implementar formularios, validaciones, arrays de objetos, eventos, login básico, roles y CRUD sin backend ni base de datos.</code></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Respuesta aprovechada</td>
+                                    <td>Arquitectura modular basada en objetos en memoria sincronizados con <code>localStorage</code>; implementación de métodos funcionales de array (<code>filter</code>, <code>find</code>, <code>map</code>, <code>forEach</code>); validación estricta con expresiones regulares para placas y horas de atención; e integración de SweetAlert2 para experiencia de usuario.</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Fuentes informales sugeridas</td>
+                                    <td>
+                                        <ul class="mb-0 ps-3">
+                                            <li>Diseño de interfaz y maquetación (Bootstrap): sistema de rejilla responsivo y utilidades de formularios.</li>
+                                            <li>Lógica de autenticación y roles (JavaScript): control de acceso basado en roles en el cliente y persistencia local.</li>
+                                            <li>Validación de datos: expresiones regulares aplicadas a placas vehiculares y fechas.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Fuentes verificadas y citadas (Formato APA)</td>
+                                    <td>
+                                        <ul class="mb-0 ps-3">
+                                            <li>Mozilla Developer Network. (s.f.). <em>Array - JavaScript | MDN Web Docs</em>. <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array</a></li>
+                                            <li>Otto, M., & Thornton, J. (s.f.). <em>Bootstrap Grid system & Forms</em>. <a href="https://getbootstrap.com/docs/5.3/layout/grid/" target="_blank">https://getbootstrap.com/docs/5.3/layout/grid/</a></li>
+                                            <li>Mansuri, F. (2025, junio 6). <em>CSS Specificity — The Hidden Reason Your UI Breaks</em>. DEV Community. <a href="https://dev.to/fazal_mansuri_/css-specificity-the-hidden-reason-your-ui-breaks-2jhp" target="_blank">https://dev.to/</a></li>
+                                            <li>SweetAlert2. (s.f.). <em>A beautiful, responsive, customizable, accessible replacement for JavaScript's popup boxes</em>. <a href="https://sweetalert2.github.io/" target="_blank">https://sweetalert2.github.io/</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts: Bootstrap Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
