@@ -373,23 +373,23 @@ function renderizarCatalogoServicios() {
         const col = document.createElement("div");
         col.className = "col-lg-4 col-md-6";
         col.innerHTML = `
-            <div class="service-card p-4">
-                <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="service-card">
+                <div class="d-flex justify-content-between align-items-start mb-3">
                     <div class="card-icon">
                         <i class="${servicio.icono}"></i>
                     </div>
-                    <span class="badge bg-secondary bg-opacity-50 text-warning px-2 py-1 small">
-                        <i class="fa-regular fa-clock me-1"></i>${servicio.tiempo}
+                    <span class="time-badge">
+                        <i class="fa-regular fa-clock me-1 text-warning"></i>${servicio.tiempo}
                     </span>
                 </div>
-                <h5 class="fw-bold text-white mb-2">${servicio.nombre}</h5>
-                <p class="text-white-50 small flex-grow-1">${servicio.descripcion}</p>
-                <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary mt-3">
+                <h5>${servicio.nombre}</h5>
+                <p class="flex-grow-1">${servicio.descripcion}</p>
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-25 mt-auto">
                     <div>
-                        <span class="text-secondary small d-block">Referencial:</span>
-                        <strong class="text-warning">${servicio.precioRef}</strong>
+                        <span class="text-secondary small d-block" style="font-size: 0.725rem; text-transform: uppercase; letter-spacing: 0.06em;">Tarifa Base</span>
+                        <strong class="price-badge">${servicio.precioRef}</strong>
                     </div>
-                    <button type="button" class="btn btn-sm btn-outline-warning fw-semibold btn-solicitar-servicio" data-servicio="${servicio.nombre}">
+                    <button type="button" class="btn btn-sm btn-warning btn-solicitar-servicio" data-servicio="${servicio.nombre}">
                         <i class="fa-solid fa-calendar-check me-1"></i> Agendar
                     </button>
                 </div>
@@ -1386,17 +1386,17 @@ function mostrarDetalleSolicitud(id) {
 function obtenerBadgeEstado(estado) {
     switch (estado) {
         case "Pendiente":
-            return `<span class="badge badge-estado-pendiente"><i class="fa-solid fa-clock me-1"></i>Pendiente</span>`;
+            return `<span class="badge-estado badge-estado-pendiente"><span class="status-dot"></span>Pendiente</span>`;
         case "En revisión":
-            return `<span class="badge badge-estado-en-revisión"><i class="fa-solid fa-magnifying-glass me-1"></i>En revisión</span>`;
+            return `<span class="badge-estado badge-estado-en-revision"><span class="status-dot"></span>En revisión</span>`;
         case "En proceso":
-            return `<span class="badge badge-estado-en-proceso"><i class="fa-solid fa-gears me-1"></i>En proceso</span>`;
+            return `<span class="badge-estado badge-estado-en-proceso"><span class="status-dot"></span>En proceso</span>`;
         case "Finalizado":
-            return `<span class="badge badge-estado-finalizado"><i class="fa-solid fa-circle-check me-1"></i>Finalizado</span>`;
+            return `<span class="badge-estado badge-estado-finalizado"><span class="status-dot"></span>Finalizado</span>`;
         case "Cancelado":
-            return `<span class="badge badge-estado-cancelado"><i class="fa-solid fa-ban me-1"></i>Cancelado</span>`;
+            return `<span class="badge-estado badge-estado-cancelado"><span class="status-dot"></span>Cancelado</span>`;
         default:
-            return `<span class="badge bg-secondary">${estado}</span>`;
+            return `<span class="badge-estado bg-secondary text-white">${estado}</span>`;
     }
 }
 

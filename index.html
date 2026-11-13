@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Outfit (Titulares e ingeniería), Inter (Lectura técnica), JetBrains Mono (Métricas y Placas) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -124,19 +124,19 @@
                                 <i class="fa-solid fa-list-check me-2"></i> Ver Catálogo de Servicios
                             </a>
                         </div>
-                        <!-- Métricas de confianza -->
+                        <!-- Métricas de confianza técnica -->
                         <div class="row mt-5 pt-3 border-top border-secondary text-center text-md-start g-3">
                             <div class="col-4">
-                                <h3 class="fw-bold text-warning mb-0">+15</h3>
-                                <p class="text-white-50 small mb-0">Años de experiencia</p>
+                                <div class="metric-number text-warning">+15</div>
+                                <div class="metric-label">Años de experiencia</div>
                             </div>
                             <div class="col-4">
-                                <h3 class="fw-bold text-warning mb-0">+10k</h3>
-                                <p class="text-white-50 small mb-0">Vehículos atendidos</p>
+                                <div class="metric-number text-warning">+10k</div>
+                                <div class="metric-label">Vehículos atendidos</div>
                             </div>
                             <div class="col-4">
-                                <h3 class="fw-bold text-warning mb-0">100%</h3>
-                                <p class="text-white-50 small mb-0">Garantía en mano de obra</p>
+                                <div class="metric-number text-warning">100%</div>
+                                <div class="metric-label">Garantía certificada</div>
                             </div>
                         </div>
                     </div>
@@ -169,35 +169,37 @@
         </section>
 
         <!-- SECCIÓN 2: ACERCA DE NOSOTROS -->
-        <section id="nosotros" class="py-5 bg-light">
+        <section id="nosotros" class="py-5">
             <div class="container py-4">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6">
                         <div class="position-relative">
-                            <div class="about-card p-4 bg-white shadow rounded-4 border-start border-4 border-warning">
+                            <div class="about-card p-4 p-md-5 border-start border-4 border-warning">
                                 <div class="d-flex align-items-center gap-3 mb-3">
-                                    <i class="fa-solid fa-screwdriver-wrench text-warning fs-1"></i>
+                                    <div class="p-3 bg-warning bg-opacity-10 text-warning rounded-3 border border-warning border-opacity-25">
+                                        <i class="fa-solid fa-screwdriver-wrench fs-2"></i>
+                                    </div>
                                     <div>
-                                        <h4 class="fw-bold mb-0">Taller Automotriz Certificado</h4>
-                                        <p class="text-muted small mb-0">Normas internacionales de servicio</p>
+                                        <h4 class="fw-bold mb-0 text-white">Centro Técnico Automotriz Especializado</h4>
+                                        <p class="text-white-50 small mb-0">Normas y protocolos internacionales de servicio</p>
                                     </div>
                                 </div>
-                                <p class="text-secondary mb-3">
-                                    Somos un centro especializado en mecánica general, preventiva y correctiva con infraestructura de primer nivel. Ofrecemos a nuestros clientes una plataforma web interactiva donde pueden dar seguimiento a cada etapa de la atención de sus vehículos.
+                                <p class="text-white-50 mb-4">
+                                    Somos un taller automotriz de alta precisión en mecánica preventiva, correctiva y diagnóstico computarizado. Implementamos un sistema web de seguimiento transparente donde cada propietario consulta en tiempo real las fases de atención de su automóvil.
                                 </p>
                                 <div class="row g-3 text-center">
                                     <div class="col-sm-6">
-                                        <div class="p-3 bg-light rounded-3 border">
+                                        <div class="p-3 rounded-3 border border-secondary border-opacity-25 bg-black bg-opacity-25">
                                             <i class="fa-solid fa-shield-halved text-primary fs-3 mb-2"></i>
-                                            <h6 class="fw-bold mb-1">Misión</h6>
-                                            <p class="text-muted small mb-0">Brindar seguridad y confiabilidad mecánica con tecnología de vanguardia.</p>
+                                            <h6 class="fw-bold mb-1 text-white">Misión Técnica</h6>
+                                            <p class="text-white-50 small mb-0">Garantizar seguridad y precisión en cada orden de trabajo con repuestos certificados.</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="p-3 bg-light rounded-3 border">
+                                        <div class="p-3 rounded-3 border border-secondary border-opacity-25 bg-black bg-opacity-25">
                                             <i class="fa-solid fa-eye text-success fs-3 mb-2"></i>
-                                            <h6 class="fw-bold mb-1">Visión</h6>
-                                            <p class="text-muted small mb-0">Ser el taller automotriz líder del país en transparencia y servicio digital.</p>
+                                            <h6 class="fw-bold mb-1 text-white">Visión Operativa</h6>
+                                            <p class="text-white-50 small mb-0">Liderar la transformación digital en servicios mecánicos y confianza al usuario.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -205,31 +207,31 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <span class="text-warning fw-bold text-uppercase small tracking-wider">¿Por qué elegir AutoTech Pro?</span>
-                        <h2 class="display-6 fw-bold mb-4 mt-2">Compromiso técnico con cada detalle de su automóvil</h2>
-                        <p class="text-muted mb-4">
-                            Nuestro equipo está capacitado para diagnosticar y resolver cualquier falla mecánica, eléctrica o electrónica. Implementamos políticas de estricto control de calidad y honestidad en presupuestos.
+                        <span class="text-warning fw-bold text-uppercase small tracking-wider">Estándares de Servicio</span>
+                        <h2 class="display-6 fw-bold mb-4 mt-2 text-white">Control de Calidad en Cada Intervención Mecánica</h2>
+                        <p class="text-white-50 mb-4">
+                            Nuestra infraestructura integra laboratorio de inyección electrónica, alineación tridimensional láser y estaciones de trabajo diseñadas para minimizar tiempos de espera con presupuestos claros.
                         </p>
                         <div class="d-flex flex-column gap-3">
                             <div class="d-flex align-items-start gap-3">
-                                <div class="feature-icon bg-warning text-dark rounded-circle p-2 px-3 fw-bold">1</div>
+                                <div class="feature-step-badge">01</div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">Escaneo y diagnóstico con escáneres OBD-II de última generación</h6>
-                                    <p class="text-muted small mb-0">Detección precisa de códigos de falla en el sistema de motor, transmisión y sensores.</p>
+                                    <h6 class="fw-bold mb-1 text-white">Diagnóstico computarizado con escáneres OBD-II avanzados</h6>
+                                    <p class="text-white-50 small mb-0">Lectura precisa de códigos DTC en módulos ECU, ABS, Airbag y parámetros en vivo.</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-3">
-                                <div class="feature-icon bg-warning text-dark rounded-circle p-2 px-3 fw-bold">2</div>
+                                <div class="feature-step-badge">02</div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">Trazabilidad completa de sus órdenes de mantenimiento</h6>
-                                    <p class="text-muted small mb-0">Consulte el estado de su vehículo en tiempo real: Pendiente, En revisión, En proceso o Finalizado.</p>
+                                    <h6 class="fw-bold mb-1 text-white">Trazabilidad completa de órdenes de mantenimiento</h6>
+                                    <p class="text-white-50 small mb-0">Estados actualizados en tiempo real: Pendiente, En revisión, En proceso y Finalizado.</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-3">
-                                <div class="feature-icon bg-warning text-dark rounded-circle p-2 px-3 fw-bold">3</div>
+                                <div class="feature-step-badge">03</div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">Personal altamente calificado y repuestos garantizados</h6>
-                                    <p class="text-muted small mb-0">Técnicos titulados con certificaciones automotrices vigentes.</p>
+                                    <h6 class="fw-bold mb-1 text-white">Mecánicos certificados y repuestos con garantía por escrito</h6>
+                                    <p class="text-white-50 small mb-0">Técnicos automotrices titulados y registro digital de cada componente sustituido.</p>
                                 </div>
                             </div>
                         </div>
@@ -255,24 +257,22 @@
         </section>
 
         <!-- SECCIÓN 4: FORMULARIO DE SOLICITUD DE MANTENIMIENTO (MÓDULO 2) -->
-        <section id="solicitud" class="py-5 bg-secondary-subtle">
+        <section id="solicitud" class="py-5">
             <div class="container py-4">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
-                            <div class="card-header bg-dark text-white p-4 border-0">
-                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                                    <div>
-                                        <h3 class="fw-bold mb-1"><i class="fa-solid fa-calendar-check text-warning me-2"></i>Solicitud de Mantenimiento Vehicular</h3>
-                                        <p class="text-white-50 small mb-0">Complete todos los campos requeridos para registrar la orden de servicio.</p>
-                                    </div>
-                                    <span class="badge bg-warning text-dark fw-bold px-3 py-2">
-                                        <i class="fa-solid fa-shield-cat me-1"></i> Formulario Validado
-                                    </span>
+                        <div class="form-card">
+                            <div class="form-card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                <div>
+                                    <h3 class="fw-bold mb-1 text-white"><i class="fa-solid fa-calendar-check text-warning me-2"></i>Solicitud de Mantenimiento Vehicular</h3>
+                                    <p class="text-white-50 small mb-0">Emisión digital de orden de servicio y agendamiento en taller.</p>
                                 </div>
+                                <span class="badge bg-warning text-dark fw-bold px-3 py-2 font-monospace">
+                                    <i class="fa-solid fa-shield-halved me-1"></i> PROTOCOLO ACTIVO
+                                </span>
                             </div>
                             
-                            <div class="card-body p-4 p-md-5 bg-white">
+                            <div class="p-4 p-md-5">
                                 <!-- Banner contextual para cuando hay un usuario logueado -->
                                 <div id="solicitudRoleAlert" class="alert alert-info d-flex align-items-center justify-content-between mb-4 fade show" role="alert">
                                     <div class="d-flex align-items-center">
@@ -290,9 +290,9 @@
                                 <!-- FORMULARIO PRINCIPAL -->
                                 <form id="formSolicitud" novalidate>
                                     <!-- SUBSECCIÓN 1: DATOS DEL CLIENTE -->
-                                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">
-                                        <i class="fa-solid fa-user text-warning me-2"></i>1. Datos del Propietario / Cliente
-                                    </h5>
+                                    <div class="form-step-title">
+                                        <i class="fa-solid fa-user text-warning"></i> 1. Identificación del Propietario / Cliente
+                                    </div>
                                     
                                     <div class="row g-3 mb-4">
                                         <!-- Modo admin: opción de seleccionar cliente existente o escribir uno nuevo -->
@@ -344,9 +344,9 @@
                                     </div>
 
                                     <!-- SUBSECCIÓN 2: DATOS DEL AUTOMÓVIL -->
-                                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">
-                                        <i class="fa-solid fa-car-side text-warning me-2"></i>2. Información del Vehículo
-                                    </h5>
+                                    <div class="form-step-title">
+                                        <i class="fa-solid fa-car-side text-warning"></i> 2. Ficha Técnica del Automóvil
+                                    </div>
 
                                     <div class="row g-3 mb-4">
                                         <div class="col-md-4">
@@ -406,9 +406,9 @@
                                     </div>
 
                                     <!-- SUBSECCIÓN 3: SERVICIO Y PROGRAMACIÓN -->
-                                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">
-                                        <i class="fa-solid fa-toolbox text-warning me-2"></i>3. Servicio Requerido y Cita
-                                    </h5>
+                                    <div class="form-step-title">
+                                        <i class="fa-solid fa-toolbox text-warning"></i> 3. Protocolo de Servicio y Programación de Cita
+                                    </div>
 
                                     <div class="row g-3 mb-4">
                                         <div class="col-md-6">
@@ -535,37 +535,39 @@
         </section>
 
         <!-- SECCIÓN 5: MIS MANTENIMIENTOS (VISTA DE CLIENTE) -->
-        <section id="mis-mantenimientos" class="py-5 bg-light d-none">
+        <section id="mis-mantenimientos" class="py-5 d-none">
             <div class="container py-4">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
                     <div>
-                        <span class="badge bg-primary text-uppercase px-3 py-2 fw-bold">Área de Cliente</span>
-                        <h2 class="display-6 fw-bold mt-2 mb-1">Mis Solicitudes de Mantenimiento</h2>
-                        <p class="text-muted mb-0">Consulte el estado de atención y el historial de sus vehículos.</p>
+                        <span class="badge bg-primary text-uppercase px-3 py-2 fw-bold font-monospace">
+                            <i class="fa-solid fa-user-check me-1"></i> PORTAL PRIVADO DE CLIENTE
+                        </span>
+                        <h2 class="display-6 fw-bold mt-2 mb-1 text-white">Mis Órdenes de Mantenimiento</h2>
+                        <p class="text-white-50 mb-0">Seguimiento técnico, historial mecánico y estado de entrega de sus vehículos.</p>
                     </div>
                     <div class="d-flex gap-2">
-                        <a href="#solicitud" class="btn btn-outline-primary fw-semibold">
-                            <i class="fa-solid fa-plus me-1"></i> Nueva Solicitud
+                        <a href="#solicitud" class="btn btn-warning fw-semibold">
+                            <i class="fa-solid fa-plus me-1"></i> Nueva Orden
                         </a>
-                        <button class="btn btn-secondary fw-semibold" id="btnRecargarMisSolicitudes">
+                        <button class="btn btn-outline-light fw-semibold" id="btnRecargarMisSolicitudes">
                             <i class="fa-solid fa-arrows-rotate me-1"></i> Actualizar
                         </button>
                     </div>
                 </div>
 
                 <!-- Tarjeta con resumen del cliente -->
-                <div class="card border-0 shadow-sm mb-4 bg-white rounded-3">
+                <div class="card border-0 shadow-sm mb-4 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-3">
                     <div class="card-body p-4">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h5 class="fw-bold mb-1 text-dark" id="clienteDashboardNombre">Propietario: Cargando...</h5>
-                                <p class="text-muted small mb-0">
+                                <h5 class="fw-bold mb-1 text-white" id="clienteDashboardNombre">Propietario: Cargando...</h5>
+                                <p class="text-white-50 small mb-0">
                                     <i class="fa-solid fa-envelope me-1"></i> <span id="clienteDashboardEmail">-</span> | 
                                     <i class="fa-solid fa-phone me-1 ms-2"></i> <span id="clienteDashboardTelefono">-</span>
                                 </p>
                             </div>
                             <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                                <span class="badge bg-info text-dark fs-6 px-3 py-2" id="clienteDashboardCount">
+                                <span class="badge bg-secondary border border-secondary text-white fs-6 px-3 py-2 font-monospace" id="clienteDashboardCount">
                                     <i class="fa-solid fa-car me-1"></i> 0 Órdenes registradas
                                 </span>
                             </div>
@@ -574,11 +576,11 @@
                 </div>
 
                 <!-- Tabla de mantenimientos del cliente -->
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card bg-dark border-secondary border-opacity-25 shadow-lg rounded-4 overflow-hidden">
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-hover align-middle mb-0 text-nowrap">
-                                <thead class="table-dark">
+                            <table class="table table-dark table-hover align-middle mb-0 text-nowrap">
+                                <thead>
                                     <tr>
                                         <th>Código</th>
                                         <th>Vehículo</th>
@@ -597,8 +599,8 @@
                         </div>
                         <div id="misMantenimientosEmpty" class="text-center py-5 d-none">
                             <i class="fa-solid fa-car-tunnel text-secondary opacity-50 display-3 mb-3"></i>
-                            <h5 class="fw-bold text-secondary">Aún no tiene solicitudes de mantenimiento registradas</h5>
-                            <p class="text-muted small mb-3">Agende su primera cita utilizando nuestro formulario en línea.</p>
+                            <h5 class="fw-bold text-white">Aún no tiene solicitudes de mantenimiento registradas</h5>
+                            <p class="text-white-50 small mb-3">Agende su primera cita utilizando nuestro formulario en línea.</p>
                             <a href="#solicitud" class="btn btn-warning fw-bold px-4">
                                 <i class="fa-solid fa-calendar-plus me-2"></i> Agendar mi primer servicio
                             </a>
@@ -635,53 +637,53 @@
                 <!-- METRICAS / ESTADÍSTICAS DEL TALLER (Calculadas con map, filter y for) -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-3 col-sm-6">
-                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                        <div class="kpi-card">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="text-secondary small text-uppercase mb-1">Total Solicitudes</h6>
-                                    <h3 class="fw-bold mb-0 text-white" id="statTotal">0</h3>
+                                    <div class="kpi-title">Total Órdenes</div>
+                                    <div class="kpi-value text-white" id="statTotal">0</div>
                                 </div>
-                                <div class="p-3 bg-secondary bg-opacity-50 rounded-circle">
+                                <div class="p-3 bg-secondary bg-opacity-10 text-secondary rounded-3 border border-secondary border-opacity-25">
                                     <i class="fa-solid fa-clipboard-list fs-4 text-warning"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                        <div class="kpi-card">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="text-secondary small text-uppercase mb-1">Pendientes / En Revisión</h6>
-                                    <h3 class="fw-bold mb-0 text-warning" id="statPendientes">0</h3>
+                                    <div class="kpi-title">Pendientes / Revisión</div>
+                                    <div class="kpi-value text-warning" id="statPendientes">0</div>
                                 </div>
-                                <div class="p-3 bg-warning bg-opacity-25 rounded-circle">
-                                    <i class="fa-solid fa-clock-rotate-left fs-4 text-warning"></i>
+                                <div class="p-3 bg-warning bg-opacity-10 text-warning rounded-3 border border-warning border-opacity-25">
+                                    <i class="fa-solid fa-clock-rotate-left fs-4"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                        <div class="kpi-card">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="text-secondary small text-uppercase mb-1">En Proceso (Taller)</h6>
-                                    <h3 class="fw-bold mb-0 text-info" id="statProceso">0</h3>
+                                    <div class="kpi-title">En Proceso (Bahías)</div>
+                                    <div class="kpi-value text-info" id="statProceso">0</div>
                                 </div>
-                                <div class="p-3 bg-info bg-opacity-25 rounded-circle">
-                                    <i class="fa-solid fa-wrench fs-4 text-info"></i>
+                                <div class="p-3 bg-info bg-opacity-10 text-info rounded-3 border border-info border-opacity-25">
+                                    <i class="fa-solid fa-wrench fs-4"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <div class="card bg-secondary bg-opacity-25 border-secondary text-white rounded-3 p-3">
+                        <div class="kpi-card">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="text-secondary small text-uppercase mb-1">Finalizados / Entregados</h6>
-                                    <h3 class="fw-bold mb-0 text-success" id="statFinalizados">0</h3>
+                                    <div class="kpi-title">Finalizados / Salida</div>
+                                    <div class="kpi-value text-success" id="statFinalizados">0</div>
                                 </div>
-                                <div class="p-3 bg-success bg-opacity-25 rounded-circle">
-                                    <i class="fa-solid fa-circle-check fs-4 text-success"></i>
+                                <div class="p-3 bg-success bg-opacity-10 text-success rounded-3 border border-success border-opacity-25">
+                                    <i class="fa-solid fa-circle-check fs-4"></i>
                                 </div>
                             </div>
                         </div>
@@ -750,52 +752,54 @@
         </section>
 
         <!-- SECCIÓN 7: CONTACTO Y UBICACIÓN -->
-        <section id="contacto" class="py-5 bg-white">
+        <section id="contacto" class="py-5">
             <div class="container py-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-lg-5">
-                        <span class="badge bg-warning text-dark text-uppercase px-3 py-2 fw-bold mb-2">Estamos para Servirle</span>
-                        <h2 class="display-6 fw-bold mb-3">Visítenos en nuestro Taller Matriz</h2>
-                        <p class="text-muted mb-4">
-                            Instalaciones equipadas con elevadores hidráulicos de última generación, cabinas de pintura y laboratorio de inyección electrónica.
+                        <span class="badge bg-warning text-dark text-uppercase px-3 py-2 fw-bold mb-2 font-monospace">
+                            <i class="fa-solid fa-location-dot me-1"></i> TALLER MATRIZ
+                        </span>
+                        <h2 class="display-6 fw-bold mb-3 text-white">Instalaciones y Recepción en Taller</h2>
+                        <p class="text-white-50 mb-4">
+                            Bahías equipadas con elevadores hidráulicos simétricos, banco de pruebas de inyección y cabina de pintura presurizada.
                         </p>
                         <div class="d-flex flex-column gap-3">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="bg-light p-3 rounded-circle text-warning fs-5">
+                                <div class="bg-black bg-opacity-30 border border-secondary border-opacity-25 p-3 rounded-circle text-warning fs-5">
                                     <i class="fa-solid fa-map-location-dot"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-0">Ubicación</h6>
-                                    <p class="text-muted small mb-0">Av. De los Shyris & Portugal, Sector La Carolina, Quito - Ecuador</p>
+                                    <h6 class="fw-bold mb-0 text-white">Ubicación</h6>
+                                    <p class="text-white-50 small mb-0">Av. De los Shyris & Portugal, Sector La Carolina, Quito - Ecuador</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <div class="bg-light p-3 rounded-circle text-success fs-5">
+                                <div class="bg-black bg-opacity-30 border border-secondary border-opacity-25 p-3 rounded-circle text-success fs-5">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-0">Líneas Directas</h6>
-                                    <p class="text-muted small mb-0">(02) 299-8000 | Celular: 099 123 4567 | WhatsApp Soporte</p>
+                                    <h6 class="fw-bold mb-0 text-white">Líneas Directas de Taller</h6>
+                                    <p class="text-white-50 small mb-0">(02) 299-8000 | Celular: 099 123 4567 | WhatsApp Soporte</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center gap-3">
-                                <div class="bg-light p-3 rounded-circle text-primary fs-5">
+                                <div class="bg-black bg-opacity-30 border border-secondary border-opacity-25 p-3 rounded-circle text-primary fs-5">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-0">Correo de Atención</h6>
-                                    <p class="text-muted small mb-0">contacto@autotechpro.ec / citas@autotechpro.ec</p>
+                                    <h6 class="fw-bold mb-0 text-white">Correo de Atención</h6>
+                                    <p class="text-white-50 small mb-0">contacto@autotechpro.ec / citas@autotechpro.ec</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <div class="card border-0 shadow rounded-4 overflow-hidden">
-                            <div class="card-body p-4 bg-light">
-                                <h5 class="fw-bold mb-3"><i class="fa-solid fa-clock text-warning me-2"></i>Horarios de Atención al Cliente</h5>
+                        <div class="card bg-dark border-secondary border-opacity-25 shadow-lg rounded-4 overflow-hidden">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3 text-white"><i class="fa-solid fa-clock text-warning me-2"></i>Horarios de Recepción y Atención</h5>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered bg-white mb-0">
-                                        <thead class="table-dark">
+                                    <table class="table table-dark table-bordered mb-0">
+                                        <thead>
                                             <tr>
                                                 <th>Día</th>
                                                 <th>Horario Matutino</th>
@@ -805,20 +809,20 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="fw-semibold">Lunes a Viernes</td>
+                                                <td class="fw-semibold text-white">Lunes a Viernes</td>
                                                 <td>08:00 - 13:00</td>
                                                 <td>14:00 - 17:30</td>
-                                                <td><span class="badge bg-success">Disponible</span></td>
+                                                <td><span class="badge bg-success bg-opacity-25 border border-success text-success">Disponible</span></td>
                                             </tr>
                                             <tr>
-                                                <td class="fw-semibold">Sábados</td>
+                                                <td class="fw-semibold text-white">Sábados</td>
                                                 <td>08:30 - 13:30</td>
-                                                <td>Solo entregas</td>
-                                                <td><span class="badge bg-warning text-dark">Previa Cita</span></td>
+                                                <td class="text-white-50">Solo entregas</td>
+                                                <td><span class="badge bg-warning bg-opacity-25 border border-warning text-warning">Previa Cita</span></td>
                                             </tr>
                                             <tr>
                                                 <td class="fw-semibold text-danger">Domingos y Feriados</td>
-                                                <td colspan="3" class="text-center text-muted">Cerrado (Solo emergencias vía grúa)</td>
+                                                <td colspan="3" class="text-center text-white-50">Cerrado (Solo auxilio mecánico de emergencia)</td>
                                             </tr>
                                         </tbody>
                                     </table>
