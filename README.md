@@ -120,9 +120,9 @@ git commit -m "feat: entrega completa AD01 fundamentos de desarrollo web - Mante
 # 5. Crear el repositorio en tu cuenta de GitHub con el nombre exacto:
 # WEB-3AM-B1-AD01-FundamentosDesarrolloWeb-MontufarMatias
 
-# 6. Vincular y subir a GitHub (reemplaza TU_USUARIO por tu usuario de GitHub):
+# 6. Vincular y subir a GitHub:
 git branch -M main
-git remote add origin https://github.com/TU_USUARIO/WEB-3AM-B1-AD01-FundamentosDesarrolloWeb-MontufarMatias.git
+git remote set-url origin https://github.com/matiasmontufar26/WEB-3AM-B1-AD01-FundamentosDesarrolloWeb-MontufarMatias.git
 git push -u origin main
 ```
 
