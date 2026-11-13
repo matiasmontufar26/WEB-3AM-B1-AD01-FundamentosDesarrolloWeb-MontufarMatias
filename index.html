@@ -444,68 +444,68 @@
                                         <!-- Tipo de atención: Radio Buttons (Módulo 2) -->
                                         <div class="col-md-12">
                                             <label class="form-label fw-semibold d-block">Tipo de Atención / Prioridad <span class="text-danger">*</span></label>
-                                            <div class="d-flex flex-wrap gap-4 p-3 bg-light rounded-3 border">
-                                                <div class="form-check">
+                                            <div class="choice-cards-container">
+                                                <label class="choice-card" for="prioridadNormal">
                                                     <input class="form-check-input" type="radio" name="tipoPrioridad" id="prioridadNormal" value="Normal" checked>
-                                                    <label class="form-check-label" for="prioridadNormal">
-                                                        <span class="badge bg-secondary me-1">Estándar</span> Turno regular de taller (24 a 48 hrs)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
+                                                    <div class="choice-card-body">
+                                                        <div class="choice-card-header">
+                                                            <span class="badge bg-secondary font-monospace">Estándar</span>
+                                                            <span class="choice-card-title">Turno Regular</span>
+                                                        </div>
+                                                        <p class="choice-card-desc">Atención en taller en 24 a 48 hrs con informe técnico preventivo.</p>
+                                                    </div>
+                                                </label>
+                                                <label class="choice-card" for="prioridadExpress">
                                                     <input class="form-check-input" type="radio" name="tipoPrioridad" id="prioridadExpress" value="Express">
-                                                    <label class="form-check-label" for="prioridadExpress">
-                                                        <span class="badge bg-primary me-1">Express</span> Mantenimiento en el mismo día (2 a 4 hrs)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
+                                                    <div class="choice-card-body">
+                                                        <div class="choice-card-header">
+                                                            <span class="badge bg-primary font-monospace">Express</span>
+                                                            <span class="choice-card-title">Mismo Día</span>
+                                                        </div>
+                                                        <p class="choice-card-desc">Mantenimiento prioritario en bahía rápida (2 a 4 hrs de permanencia).</p>
+                                                    </div>
+                                                </label>
+                                                <label class="choice-card choice-danger" for="prioridadUrgente">
                                                     <input class="form-check-input" type="radio" name="tipoPrioridad" id="prioridadUrgente" value="Urgente">
-                                                    <label class="form-check-label" for="prioridadUrgente">
-                                                        <span class="badge bg-danger me-1">Urgente</span> Vehículo averiado / requiere grúa inmediata
-                                                    </label>
-                                                </div>
+                                                    <div class="choice-card-body">
+                                                        <div class="choice-card-header">
+                                                            <span class="badge bg-danger font-monospace">Urgente</span>
+                                                            <span class="choice-card-title">Avería Inmediata</span>
+                                                        </div>
+                                                        <p class="choice-card-desc">Vehículo inmovilizado o requiere recepción urgente por grúa.</p>
+                                                    </div>
+                                                </label>
                                             </div>
                                         </div>
 
                                         <!-- Servicios adicionales: Checkboxes (Módulo 2) -->
                                         <div class="col-md-12">
                                             <label class="form-label fw-semibold d-block">Inspecciones Adicionales Requeridas (Opcional)</label>
-                                            <div class="row g-2 p-3 bg-light rounded-3 border">
-                                                <div class="col-sm-6 col-md-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check-adicional" type="checkbox" value="Revisión de líquido de frenos" id="chkFrenos">
-                                                        <label class="form-check-label small" for="chkFrenos">Revisión de líquido de frenos</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check-adicional" type="checkbox" value="Comprobación de carga de batería" id="chkBateria">
-                                                        <label class="form-check-label small" for="chkBateria">Comprobación de batería y alternador</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check-adicional" type="checkbox" value="Inspección de luces y faros" id="chkLuces">
-                                                        <label class="form-check-label small" for="chkLuces">Inspección de luces y faros</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check-adicional" type="checkbox" value="Revisión de amortiguadores y suspensión" id="chkSuspension">
-                                                        <label class="form-check-label small" for="chkSuspension">Amortiguadores y suspensión</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check-adicional" type="checkbox" value="Nivel de refrigerante y mangueras" id="chkRefrigerante">
-                                                        <label class="form-check-label small" for="chkRefrigerante">Refrigerante y mangueras</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input check-adicional" type="checkbox" value="Lavado de cortesía básico" id="chkLavado" checked>
-                                                        <label class="form-check-label small fw-semibold text-success" for="chkLavado">Lavado de cortesía (Gratis)</label>
-                                                    </div>
-                                                </div>
+                                            <div class="inspection-grid">
+                                                <label class="inspection-chip" for="chkFrenos">
+                                                    <input class="form-check-input check-adicional" type="checkbox" value="Revisión de líquido de frenos" id="chkFrenos">
+                                                    <span class="inspection-chip-text"><i class="fa-solid fa-compact-disc text-warning me-1"></i> Líquido de frenos</span>
+                                                </label>
+                                                <label class="inspection-chip" for="chkBateria">
+                                                    <input class="form-check-input check-adicional" type="checkbox" value="Comprobación de carga de batería" id="chkBateria">
+                                                    <span class="inspection-chip-text"><i class="fa-solid fa-bolt text-warning me-1"></i> Batería y alternador</span>
+                                                </label>
+                                                <label class="inspection-chip" for="chkLuces">
+                                                    <input class="form-check-input check-adicional" type="checkbox" value="Inspección de luces y faros" id="chkLuces">
+                                                    <span class="inspection-chip-text"><i class="fa-solid fa-lightbulb text-warning me-1"></i> Luces y faros</span>
+                                                </label>
+                                                <label class="inspection-chip" for="chkSuspension">
+                                                    <input class="form-check-input check-adicional" type="checkbox" value="Revisión de amortiguadores y suspensión" id="chkSuspension">
+                                                    <span class="inspection-chip-text"><i class="fa-solid fa-arrows-up-down text-warning me-1"></i> Amortiguadores</span>
+                                                </label>
+                                                <label class="inspection-chip" for="chkRefrigerante">
+                                                    <input class="form-check-input check-adicional" type="checkbox" value="Nivel de refrigerante y mangueras" id="chkRefrigerante">
+                                                    <span class="inspection-chip-text"><i class="fa-solid fa-temperature-half text-warning me-1"></i> Refrigerante</span>
+                                                </label>
+                                                <label class="inspection-chip" for="chkLavado">
+                                                    <input class="form-check-input check-adicional" type="checkbox" value="Lavado de cortesía básico" id="chkLavado" checked>
+                                                    <span class="inspection-chip-text text-success fw-bold"><i class="fa-solid fa-shower text-success me-1"></i> Lavado cortesía (Gratis)</span>
+                                                </label>
                                             </div>
                                         </div>
 
@@ -905,14 +905,14 @@
                 <div class="modal-body p-4">
                     <form id="formLogin">
                         <div class="mb-3">
-                            <label for="loginEmail" class="form-label text-dark fw-semibold">Ingresa tu correo</label>
+                            <label for="loginEmail" class="form-label fw-semibold">Ingresa tu correo</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                                 <input type="email" class="form-control" id="loginEmail" placeholder="ejemplo@correo.com" required>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="loginPassword" class="form-label text-dark fw-semibold">Ingresa tu contraseña</label>
+                            <label for="loginPassword" class="form-label fw-semibold">Ingresa tu contraseña</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                 <input type="password" class="form-control" id="loginPassword" placeholder="***" required>
@@ -927,25 +927,25 @@
                     </form>
 
                     <!-- ACCESOS RÁPIDOS DE PRUEBA (Para facilitar la revisión docente de los casos mínimos de prueba) -->
-                    <div class="pt-3 border-top">
-                        <span class="text-uppercase small text-muted fw-bold d-block mb-2 text-center">
-                            <i class="fa-solid fa-vial me-1"></i> Cuentas de Demostración y Prueba Rápida
+                    <div class="pt-3 border-top border-secondary border-opacity-25">
+                        <span class="text-uppercase small text-white-50 fw-bold d-block mb-2 text-center font-monospace">
+                            <i class="fa-solid fa-vial me-1 text-warning"></i> Cuentas de Demostración y Prueba Rápida
                         </span>
                         <div class="d-flex flex-column gap-2">
                             <button class="btn btn-sm btn-outline-primary text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="matias@correo.com" data-password="cliente123">
-                                <span><i class="fa-solid fa-user me-2"></i> <strong>Cliente 1:</strong> Matías Montúfar</span>
+                                <span><i class="fa-solid fa-user me-2 text-primary"></i> <strong>Cliente 1:</strong> Matías Montúfar</span>
                                 <span class="badge bg-primary">Cliente</span>
                             </button>
                             <button class="btn btn-sm btn-outline-info text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="carlos@correo.com" data-password="cliente123">
-                                <span><i class="fa-solid fa-user me-2"></i> <strong>Cliente 2:</strong> Carlos Pérez</span>
+                                <span><i class="fa-solid fa-user me-2 text-info"></i> <strong>Cliente 2:</strong> Carlos Pérez</span>
                                 <span class="badge bg-info text-dark">Cliente</span>
                             </button>
-                            <button class="btn btn-sm btn-outline-dark text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="admin@taller.com" data-password="admin123">
-                                <span><i class="fa-solid fa-user-shield me-2"></i> <strong>Administrador:</strong> Taller Central</span>
+                            <button class="btn btn-sm btn-outline-warning text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="admin@taller.com" data-password="admin123">
+                                <span><i class="fa-solid fa-user-shield me-2 text-warning"></i> <strong>Administrador:</strong> Taller Central</span>
                                 <span class="badge bg-warning text-dark">Admin</span>
                             </button>
                             <button class="btn btn-sm btn-outline-danger text-start d-flex justify-content-between align-items-center btn-quick-login" data-email="inactivo@correo.com" data-password="123456">
-                                <span><i class="fa-solid fa-user-xmark me-2"></i> <strong>Prueba 2:</strong> Cuenta Deshabilitada</span>
+                                <span><i class="fa-solid fa-user-xmark me-2 text-danger"></i> <strong>Prueba 2:</strong> Cuenta Deshabilitada</span>
                                 <span class="badge bg-danger">Inactiva</span>
                             </button>
                         </div>
@@ -967,19 +967,19 @@
                 </div>
                 <div class="modal-body p-4 text-center">
                     <div class="mb-3">
-                        <div class="p-4 bg-light rounded-circle d-inline-block text-warning shadow-sm">
+                        <div class="p-4 bg-black bg-opacity-25 rounded-circle d-inline-block text-warning border border-secondary border-opacity-25 shadow-sm">
                             <i class="fa-solid fa-user fs-1"></i>
                         </div>
                     </div>
-                    <h4 class="fw-bold mb-1" id="perfilNombre">Cargando...</h4>
-                    <p class="badge bg-primary px-3 py-2 fs-6 mb-3" id="perfilRol">Cliente</p>
+                    <h4 class="fw-bold mb-1 text-white" id="perfilNombre">Cargando...</h4>
+                    <p class="badge bg-primary px-3 py-2 fs-6 mb-3 font-monospace" id="perfilRol">Cliente</p>
 
-                    <div class="text-start bg-light p-3 rounded-3 border mb-3">
-                        <div class="mb-2"><strong><i class="fa-solid fa-envelope text-secondary me-2"></i> Correo:</strong> <span id="perfilEmail">-</span></div>
-                        <div class="mb-2"><strong><i class="fa-solid fa-phone text-secondary me-2"></i> Teléfono:</strong> <span id="perfilTelefono">-</span></div>
-                        <div class="mb-2"><strong><i class="fa-solid fa-address-card text-secondary me-2"></i> Cédula:</strong> <span id="perfilCedula">-</span></div>
-                        <div class="mb-2"><strong><i class="fa-solid fa-car text-secondary me-2"></i> Placa Frecuente:</strong> <span id="perfilPlaca" class="badge bg-dark">-</span></div>
-                        <div><strong><i class="fa-solid fa-circle-check text-success me-2"></i> Estado de cuenta:</strong> <span class="badge bg-success">Activa</span></div>
+                    <div class="text-start bg-black bg-opacity-25 p-3 rounded-3 border border-secondary border-opacity-25 mb-3 text-white">
+                        <div class="mb-2"><strong class="text-white-50"><i class="fa-solid fa-envelope text-info me-2"></i> Correo:</strong> <span id="perfilEmail">-</span></div>
+                        <div class="mb-2"><strong class="text-white-50"><i class="fa-solid fa-phone text-success me-2"></i> Teléfono:</strong> <span id="perfilTelefono">-</span></div>
+                        <div class="mb-2"><strong class="text-white-50"><i class="fa-solid fa-address-card text-warning me-2"></i> Cédula:</strong> <span id="perfilCedula">-</span></div>
+                        <div class="mb-2"><strong class="text-white-50"><i class="fa-solid fa-car text-primary me-2"></i> Placa Frecuente:</strong> <span id="perfilPlaca" class="badge bg-dark font-monospace">-</span></div>
+                        <div><strong class="text-white-50"><i class="fa-solid fa-circle-check text-success me-2"></i> Estado de cuenta:</strong> <span class="badge bg-success bg-opacity-25 border border-success text-success">Activa</span></div>
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">
@@ -1003,7 +1003,7 @@
                 <div class="modal-body p-4" id="modalDetalleBody">
                     <!-- Se llena con JS -->
                 </div>
-                <div class="modal-footer bg-light border-0">
+                <div class="modal-footer border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -1136,7 +1136,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer bg-light border-0">
+                <div class="modal-footer border-0">
                     <button type="button" class="btn btn-warning fw-bold" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalLogin">
                         Ir al Login
                     </button>
@@ -1214,7 +1214,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="modal-footer bg-light border-0">
+                <div class="modal-footer border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>

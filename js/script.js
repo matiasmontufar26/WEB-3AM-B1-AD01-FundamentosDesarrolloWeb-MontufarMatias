@@ -1317,10 +1317,10 @@ function mostrarDetalleSolicitud(id) {
         : '<li class="text-muted">Ningún servicio adicional seleccionado.</li>';
 
     contenedor.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary border-opacity-25 pb-3 mb-3">
             <div>
-                <h4 class="fw-bold mb-0 text-dark">Orden de Servicio: ${sol.id}</h4>
-                <small class="text-muted">Fecha de registro: ${sol.fechaRegistro || 'N/A'}</small>
+                <h4 class="fw-bold mb-0 text-white">Orden de Servicio: <span class="font-monospace text-warning">${sol.id}</span></h4>
+                <small class="text-white-50">Fecha de registro: ${sol.fechaRegistro || 'N/A'}</small>
             </div>
             <div>
                 ${badgeEstado}
@@ -1329,37 +1329,37 @@ function mostrarDetalleSolicitud(id) {
 
         <div class="row g-3">
             <div class="col-md-6">
-                <div class="p-3 bg-light rounded-3 border">
-                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-user me-2"></i>Datos del Propietario</h6>
-                    <p class="mb-1"><strong>Nombre:</strong> ${sol.clienteNombre}</p>
-                    <p class="mb-1"><strong>Correo:</strong> ${sol.clienteEmail}</p>
-                    <p class="mb-1"><strong>Teléfono:</strong> ${sol.clienteTelefono}</p>
-                    <p class="mb-0"><strong>Cédula:</strong> ${sol.clienteCedula}</p>
+                <div class="p-3 bg-black bg-opacity-25 rounded-3 border border-secondary border-opacity-25 text-white">
+                    <h6 class="fw-bold text-info mb-2"><i class="fa-solid fa-user me-2"></i>Datos del Propietario</h6>
+                    <p class="mb-1 text-white-50"><strong class="text-white">Nombre:</strong> ${sol.clienteNombre}</p>
+                    <p class="mb-1 text-white-50"><strong class="text-white">Correo:</strong> ${sol.clienteEmail}</p>
+                    <p class="mb-1 text-white-50"><strong class="text-white">Teléfono:</strong> ${sol.clienteTelefono}</p>
+                    <p class="mb-0 text-white-50"><strong class="text-white">Cédula:</strong> ${sol.clienteCedula}</p>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="p-3 bg-light rounded-3 border">
+                <div class="p-3 bg-black bg-opacity-25 rounded-3 border border-secondary border-opacity-25 text-white">
                     <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-car me-2"></i>Datos del Vehículo</h6>
-                    <p class="mb-1"><strong>Placa:</strong> <span class="badge bg-dark font-monospace">${sol.autoPlaca}</span></p>
-                    <p class="mb-1"><strong>Vehículo:</strong> ${sol.autoMarca} ${sol.autoModelo}</p>
-                    <p class="mb-1"><strong>Año:</strong> ${sol.autoAnio}</p>
-                    <p class="mb-0"><strong>Kilometraje:</strong> ${sol.autoKilometraje} km</p>
+                    <p class="mb-1 text-white-50"><strong class="text-white">Placa:</strong> <span class="badge bg-dark font-monospace text-warning border border-secondary border-opacity-25">${sol.autoPlaca}</span></p>
+                    <p class="mb-1 text-white-50"><strong class="text-white">Vehículo:</strong> ${sol.autoMarca} ${sol.autoModelo}</p>
+                    <p class="mb-1 text-white-50"><strong class="text-white">Año:</strong> ${sol.autoAnio}</p>
+                    <p class="mb-0 text-white-50"><strong class="text-white">Kilometraje:</strong> ${sol.autoKilometraje} km</p>
                 </div>
             </div>
 
             <div class="col-12">
-                <div class="p-3 bg-light rounded-3 border">
-                    <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-wrench me-2"></i>Detalle de la Cita de Mantenimiento</h6>
+                <div class="p-3 bg-black bg-opacity-25 rounded-3 border border-secondary border-opacity-25 text-white">
+                    <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-wrench me-2"></i>Detalle de la Cita de Mantenimiento</h6>
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="mb-1"><strong>Servicio Principal:</strong> ${sol.servicio}</p>
-                            <p class="mb-1"><strong>Fecha de Cita:</strong> ${sol.fecha}</p>
-                            <p class="mb-0"><strong>Hora de Atención:</strong> ${sol.hora} hrs.</p>
+                            <p class="mb-1 text-white-50"><strong class="text-white">Servicio Principal:</strong> ${sol.servicio}</p>
+                            <p class="mb-1 text-white-50"><strong class="text-white">Fecha de Cita:</strong> ${sol.fecha}</p>
+                            <p class="mb-0 text-white-50"><strong class="text-white">Hora de Atención:</strong> ${sol.hora} hrs.</p>
                         </div>
                         <div class="col-md-6">
-                            <p class="mb-1"><strong>Tipo de Atención:</strong> ${badgePrioridad}</p>
-                            <p class="mb-1"><strong>Revisiones Adicionales:</strong></p>
+                            <p class="mb-1 text-white-50"><strong class="text-white">Tipo de Atención:</strong> ${badgePrioridad}</p>
+                            <p class="mb-1 text-white-50"><strong class="text-white">Revisiones Adicionales:</strong></p>
                             <ul class="list-unstyled small mb-0">${adicionalesList}</ul>
                         </div>
                     </div>
@@ -1367,9 +1367,9 @@ function mostrarDetalleSolicitud(id) {
             </div>
 
             <div class="col-12">
-                <div class="p-3 bg-light rounded-3 border">
+                <div class="p-3 bg-black bg-opacity-25 rounded-3 border border-secondary border-opacity-25 text-white">
                     <h6 class="fw-bold text-secondary mb-1"><i class="fa-solid fa-comment-dots me-2"></i>Observaciones y Diagnóstico</h6>
-                    <p class="small text-muted mb-0">${sol.observaciones || "Sin observaciones adicionales registradas."}</p>
+                    <p class="small text-white-50 mb-0">${sol.observaciones || "Sin observaciones adicionales registradas."}</p>
                 </div>
             </div>
         </div>

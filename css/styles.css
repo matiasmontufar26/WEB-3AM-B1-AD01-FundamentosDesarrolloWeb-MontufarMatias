@@ -492,10 +492,10 @@ h1, h2, h3, h4, h5, h6,
 /* Checkboxes y Radio buttons ergonómicos */
 .form-check-input {
     background-color: #0b0f19;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     width: 1.15rem;
     height: 1.15rem;
-    margin-top: 0.2rem;
+    margin-top: 0.15rem;
     cursor: pointer;
 }
 
@@ -508,6 +508,104 @@ h1, h2, h3, h4, h5, h6,
     font-size: 0.85rem;
     color: #cbd5e1;
     cursor: pointer;
+}
+
+/* CARDS DE SELECCIÓN ERGONÓMICAS (PRIORIDAD & OPCIONES) */
+.choice-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-3);
+    margin-top: 0.35rem;
+}
+
+.choice-card {
+    background-color: #0b0f19;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.choice-card:hover {
+    background-color: #111827;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.choice-card:has(input:checked) {
+    background-color: rgba(37, 99, 235, 0.12);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.choice-card.choice-danger:has(input:checked) {
+    background-color: rgba(239, 68, 68, 0.12);
+    border-color: var(--color-accent-red);
+    box-shadow: 0 0 0 1px var(--color-accent-red);
+}
+
+.choice-card-body {
+    flex-grow: 1;
+}
+
+.choice-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.choice-card-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.choice-card-desc {
+    font-size: 0.775rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* GRID DE INSPECCIÓN TÉCNICA (CHECKBOXES ESTILO CHIP) */
+.inspection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: var(--space-2);
+    margin-top: 0.35rem;
+}
+
+.inspection-chip {
+    background-color: #0b0f19;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.inspection-chip:hover {
+    background-color: #111827;
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.inspection-chip:has(input:checked) {
+    background-color: rgba(37, 99, 235, 0.12);
+    border-color: var(--color-primary);
+}
+
+.inspection-chip-text {
+    font-size: 0.825rem;
+    color: #f1f5f9;
+    font-weight: 500;
+    user-select: none;
 }
 
 /* 9. BADGES DE ESTADOS INDUSTRIALES (CHIPS CON INDICADOR LED) */
